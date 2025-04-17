@@ -1,0 +1,108 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: orderflow
+      POSTGRES_PASSWORD: secret
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  # mongo:
+  #   image: mongo:7
+  #   ports:
+  #     - "27017:27017"
+  #   volumes:
+  #     - mongodata:/data/db
+
+  # elasticsearch:
+  #   image: docker.elastic.co/elasticsearch/elasticsearch:8.12.2
+  #   environment:
+  #     - discovery.type=single-node
+  #     - xpack.security.enabled=false
+  #   ports:
+  #     - "9200:9200"
+
+  # zookeeper:
+  #   image: confluentinc/cp-zookeeper:7.6.0
+  #   environment:
+  #     ZOOKEEPER_CLIENT_PORT: 2181
+
+  # kafka:
+  #   image: confluentinc/cp-kafka:7.6.0
+  #   depends_on:
+  #     - zookeeper
+  #   environment:
+  #     KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+  #     KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+  #     KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+  #   ports:
+  #     - "9092:9092"
+
+  user-service:
+    build: ./user-service
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/orderflow
+    ports:
+      - "8081:8080"
+    depends_on:
+      - postgres
+
+  # cart-service:
+  #   build: ./cart-service
+  #   ports:
+  #     - "8082:8080"
+  #   depends_on:
+  #     - postgres
+
+  # order-service:
+  #   build: ./order-service
+  #   ports:
+  #     - "8083:8080"
+  #   depends_on:
+  #     - postgres
+      # - kafka
+
+  # product-catalog:
+  #   build: ./product-catalog
+  #   ports:
+  #     - "8001:8000"
+  #   depends_on:
+  #     - mongo
+
+  # inventory-service:
+  #   build: ./inventory-service
+  #   ports:
+  #     - "8002:8000"
+  #   depends_on:
+  #     - postgres
+
+  # notification-service:
+  #   build: ./notification-service
+  #   ports:
+  #     - "8003:8000"
+    # depends_on:
+    #   - kafka
+
+  # search-service:
+  #   build: ./search-service
+  #   ports:
+  #     - "8004:8000"
+  #   depends_on:
+  #     - elasticsearch
+
+  # admin-dashboard:
+  #   build: ./admin-dashboard
+  #   ports:
+  #     - "8005:8000"
+  #   depends_on:
+  #     - postgres
+
+volumes:
+  pgdata:
+  # mongodata:
