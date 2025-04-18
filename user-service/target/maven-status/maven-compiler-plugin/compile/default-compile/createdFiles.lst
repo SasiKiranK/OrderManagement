@@ -1,0 +1,6 @@
+com/orderflow/userservice/controller/UserController.class
+com/orderflow/userservice/config/SecurityConfig.class
+com/orderflow/userservice/model/User.class
+com/orderflow/userservice/service/UserService.class
+com/orderflow/userservice/model/User$UserBuilder.class
+com/orderflow/userservice/UserServiceApplication.class

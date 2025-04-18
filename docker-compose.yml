@@ -44,6 +44,9 @@ services:
 
   user-service:
     build: ./user-service
+    volumes:
+      - ./user-service:/app
+      - ~/.m2:/root/.m2
     environment:
       SPRING_PROFILES_ACTIVE: prod
       POSTGRES_USER: ${POSTGRES_USER}
