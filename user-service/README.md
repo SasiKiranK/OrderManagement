@@ -2,6 +2,11 @@
 
 Service implementation goes here.
 
+docker-compose down -v --remove-orphans
+docker system prune -af --volumes
+docker-compose build --no-cache
+docker-compose up
+
 
 OrderFlow/
 ├── docker-compose.yml             # Spins up all services

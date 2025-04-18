@@ -1,4 +1,5 @@
 /app/src/main/java/com/orderflow/userservice/UserServiceApplication.java
+/app/src/main/java/com/orderflow/userservice/config/RedisConfig.java
 /app/src/main/java/com/orderflow/userservice/config/SecurityConfig.java
 /app/src/main/java/com/orderflow/userservice/controller/UserController.java
 /app/src/main/java/com/orderflow/userservice/dto/LoginRequest.java

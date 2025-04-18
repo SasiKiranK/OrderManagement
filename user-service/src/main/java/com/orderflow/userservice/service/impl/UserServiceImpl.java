@@ -2,6 +2,8 @@ package com.orderflow.userservice.service.impl;
 
 import com.orderflow.userservice.service.UserService;
 
+import jakarta.annotation.PostConstruct;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,11 @@ public class UserServiceImpl implements UserService{
         this.passwordEncoder = passwordEncoder;
     }
 
+    @PostConstruct
+    public void printRedisHost() {
+        System.out.println(">>> Redis Host: " + System.getenv("SPRING_REDIS_HOST"));
+    }
+
     @Override
     public User createUser(User user){
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -39,6 +46,8 @@ public class UserServiceImpl implements UserService{
     @Override
     @Cacheable(value = "users", key = "#id")
     public User getUser(Long id){
+        System.out.println(">>> Fetching user from DB: " + id);
+
         return userRepository.findById(id)
         .orElseThrow(() -> new UserNotFoundException(id));
     }
