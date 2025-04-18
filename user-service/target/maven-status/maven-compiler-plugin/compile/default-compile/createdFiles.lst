@@ -1,6 +1,11 @@
 com/orderflow/userservice/controller/UserController.class
 com/orderflow/userservice/config/SecurityConfig.class
 com/orderflow/userservice/model/User.class
-com/orderflow/userservice/service/UserService.class
+com/orderflow/userservice/service/impl/UserServiceImpl.class
+com/orderflow/userservice/exception/GlobalExceptionHandler.class
 com/orderflow/userservice/model/User$UserBuilder.class
 com/orderflow/userservice/UserServiceApplication.class
+com/orderflow/userservice/dto/LoginRequest.class
+com/orderflow/userservice/repository/UserRepository.class
+com/orderflow/userservice/service/UserService.class
+com/orderflow/userservice/exception/UserNotFoundException.class

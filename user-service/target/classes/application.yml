@@ -10,7 +10,17 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  cache:
+    type: redis
+  redis:
+    host: ${SPRING_REDIS_HOST:redis}
+    port: ${SPRING_REDIS_PORT:6379}
   main:
     allow-bean-definition-overriding: true
 server:
   port: 8080
+
+logging:
+  level:
+    org.springframework.data.redis: DEBUG
+    io.lettuce.core: DEBUG

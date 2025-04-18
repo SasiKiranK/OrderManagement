@@ -1,5 +1,10 @@
 /app/src/main/java/com/orderflow/userservice/UserServiceApplication.java
 /app/src/main/java/com/orderflow/userservice/config/SecurityConfig.java
 /app/src/main/java/com/orderflow/userservice/controller/UserController.java
+/app/src/main/java/com/orderflow/userservice/dto/LoginRequest.java
+/app/src/main/java/com/orderflow/userservice/exception/GlobalExceptionHandler.java
+/app/src/main/java/com/orderflow/userservice/exception/UserNotFoundException.java
 /app/src/main/java/com/orderflow/userservice/model/User.java
+/app/src/main/java/com/orderflow/userservice/repository/UserRepository.java
 /app/src/main/java/com/orderflow/userservice/service/UserService.java
+/app/src/main/java/com/orderflow/userservice/service/impl/UserServiceImpl.java
