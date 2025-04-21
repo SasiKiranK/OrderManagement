@@ -7,6 +7,12 @@ docker system prune -af --volumes
 docker-compose build --no-cache
 docker-compose up
 
+Kafka event → product.created in product-catalog → search-service consumes and indexes it
+help me on this
+
+how to know how es indexing the pridyct details and  what are index's and what can be custamized and optimzation techniqyes 
+when to use mutiple indexes
+
 
 OrderFlow/
 ├── docker-compose.yml             # Spins up all services
@@ -21,6 +27,17 @@ OrderFlow/
 ├── admin-dashboard/               # FastAPI
 ├── kafka/                         # Kafka setup with Zookeeper
 └── nginx/                         # Optional reverse proxy
+
+
+
+Spring Boot
+PostgreSQL
+MongoDB
+Elasticsearch
+Kafka - Not Started
+Docker Compose
+Nginx
+
 
 
 
