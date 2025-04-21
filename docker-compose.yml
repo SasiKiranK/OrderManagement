@@ -48,13 +48,13 @@ services:
     depends_on:
       - mongo
 
-  # elasticsearch:
-  #   image: docker.elastic.co/elasticsearch/elasticsearch:8.12.2
-  #   environment:
-  #     - discovery.type=single-node
-  #     - xpack.security.enabled=false
-  #   ports:
-  #     - "9200:9200"
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.12.2
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    ports:
+      - "9200:9200"
 
   # zookeeper:
   #   image: confluentinc/cp-zookeeper:7.6.0
@@ -134,12 +134,17 @@ services:
     # depends_on:
     #   - kafka
 
-  # search-service:
-  #   build: ./search-service
-  #   ports:
-  #     - "8004:8000"
-  #   depends_on:
-  #     - elasticsearch
+  search-service:
+    build: ./search-service
+    ports:
+      - "8005:8005"
+    depends_on:
+      - elasticsearch
+    volumes:
+      - ./search-service:/app  
+    environment:
+      - ELASTIC_HOST=elasticsearch
+      - ELASTIC_PORT=9200
 
   # admin-dashboard:
   #   build: ./admin-dashboard
