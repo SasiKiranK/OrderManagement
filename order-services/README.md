@@ -1,3 +1,3 @@
-# Order Service
+# Product Catalog
 
 Service implementation goes here.
