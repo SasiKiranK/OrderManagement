@@ -2,13 +2,18 @@ from fastapi import APIRouter, HTTPException
 from app.schemas.product_schema import ProductCreate, ProductResponse, ProductUpdate
 from app.services.product_service import *
 from bson.errors import InvalidId
-
+from app.kafka.producer import send_product_created_event
 router = APIRouter()
 
 @router.post("/", response_model=ProductResponse)
 def create(product: ProductCreate):
     id = create_product(product)
-    return {**product.dict(), "id": id}
+    product_dict = product.dict()
+    product_dict["id"] = id  # Attach the new ID
+
+    send_product_created_event(product_dict)  # Send full product with ID
+
+    return product_dict
 
 @router.get("/{id}", response_model=ProductResponse)
 def get(id: str):
