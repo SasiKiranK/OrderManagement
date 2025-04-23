@@ -1,5 +1,5 @@
 fastapi
 uvicorn[standard]
-elasticsearch
+elasticsearch>=8.12.0,<9.0.0
 python-dotenv
 confluent_kafka
