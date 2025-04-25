@@ -289,7 +289,7 @@ CAP Theorem
 Distributed Systems & Databases
 SQL and NoSQL
 Scalability
-Zookeeper + Kafka
+Zookeeper + Kafka - 
 Location Based Services (S3, Quad Trees)
 Microservices
 Case Studies
